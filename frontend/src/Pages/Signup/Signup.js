@@ -36,6 +36,7 @@ export default function SignUp() {
             )
             // localStorage.setItem("userInfo",JSON.stringify(data))
             navigate('/')
+            console.log(data);
             
         
          

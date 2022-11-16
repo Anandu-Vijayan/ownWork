@@ -6,15 +6,15 @@ const generateToken = require("../utils/generateToken")
 
 
 // create User
- 
+
 const signup = asyncHandler(async (req, res) => {
   const { firstName, lastName, phoneNumber, password, email } = req.body;
- console.log(req.body);
+  console.log(req.body);
   const userExist = await User.findOne({ email })
   if (userExist) {
     res.status(400).json("Email already in use")
-  } else { 
-    const user = await User.create({ 
+  } else {
+    const user = await User.create({
       firstName, lastName, phoneNumber, password, email
 
     })
@@ -23,7 +23,7 @@ const signup = asyncHandler(async (req, res) => {
         _id: user._id,
         firstName: user.firstName,
         lastName: user.lastName,
-        phoneNumber: user.phoneNumber, 
+        phoneNumber: user.phoneNumber,
         email: user.email,
         password: user.password,
         token: generateToken(user._id)
@@ -69,4 +69,10 @@ const login = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { signup, login };
+const newPost = (req, res) => { 
+  console.log('req.body');
+  console.log(req.file);
+  res.json(true)
+}
+
+module.exports = { signup, login, newPost };
