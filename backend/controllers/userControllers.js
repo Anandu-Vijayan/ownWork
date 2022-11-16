@@ -69,10 +69,5 @@ const login = asyncHandler(async (req, res) => {
   }
 });
 
-const newPost = (req, res) => { 
-  console.log('req.body');
-  console.log(req.file);
-  res.json(true)
-}
 
-module.exports = { signup, login, newPost };
+module.exports = { signup, login};

@@ -1,6 +1,7 @@
 const express=require('express')
 
-const {signup,login, newPost} = require('../controllers/userControllers.js')
+const {signup,login} = require('../controllers/userControllers.js')
+const {createPost} = require('../controllers/postControllers.js')
 const multer =require('multer')
 
 const router=express.Router()
@@ -21,7 +22,7 @@ const upload = multer({ storage });
 
 router.post('/signup',signup)
 router.post('/login',login)
-router.post('/newpost',upload.single('image'),newPost)
+router.post('/newpost',upload.single('image'),createPost)
 
 
 
